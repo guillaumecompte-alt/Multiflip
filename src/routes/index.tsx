@@ -215,7 +215,7 @@ function Index() {
               </button>
             </div>
 
-            <div className="mx-auto grid max-w-3xl grid-cols-3 gap-2.5 sm:gap-4">
+            <div className="flashcard-grid mx-auto grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6">
               {series.map((q, i) => (
                 <Flashcard key={`${seriesKey}-${q.id}`} question={q} index={i} onFlip={onFlip} />
               ))}
