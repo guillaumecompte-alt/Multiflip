@@ -6,7 +6,7 @@ const PALETTE = [
   { back: "bg-sky-deep text-white", shadow: "shadow-[0_18px_40px_-18px_rgba(2,132,199,0.5)]" },
   { back: "bg-accent-deep text-white", shadow: "shadow-[0_18px_40px_-18px_rgba(225,29,72,0.5)]" },
   { back: "bg-mint-deep text-white", shadow: "shadow-[0_18px_40px_-18px_rgba(5,150,105,0.5)]" },
-  { back: "bg-sun text-ink", shadow: "shadow-[0_18px_40px_-18px_rgba(251,191,36,0.5)]" },
+  { back: "bg-sun text-[#181529]", shadow: "shadow-[0_18px_40px_-18px_rgba(251,191,36,0.5)]" },
 ];
 
 export function Flashcard({
@@ -33,7 +33,7 @@ export function Flashcard({
     >
       <div className="flip-inner relative size-full">
         <div
-          className={`flip-face absolute inset-0 grid place-items-center rounded-3xl border border-white/70 bg-white/75 p-2 backdrop-blur-xl ${tone.shadow}`}
+          className={`flip-face absolute inset-0 grid place-items-center rounded-3xl border border-white/12 bg-[#25243d]/95 p-2 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl ${tone.shadow}`}
         >
           <span className="font-display text-xl leading-tight sm:text-3xl md:text-4xl">
             {question.question}
