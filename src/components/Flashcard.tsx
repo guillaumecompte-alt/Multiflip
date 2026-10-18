@@ -1,13 +1,7 @@
 import { useState } from "react";
 import type { Question } from "@/lib/questions";
 
-const PALETTE = [
-  { back: "bg-brand text-white", shadow: "shadow-[0_18px_40px_-18px_rgba(108,92,231,0.5)]" },
-  { back: "bg-sky-deep text-white", shadow: "shadow-[0_18px_40px_-18px_rgba(2,132,199,0.5)]" },
-  { back: "bg-accent-deep text-white", shadow: "shadow-[0_18px_40px_-18px_rgba(225,29,72,0.5)]" },
-  { back: "bg-mint-deep text-white", shadow: "shadow-[0_18px_40px_-18px_rgba(5,150,105,0.5)]" },
-  { back: "bg-sun text-[#181529]", shadow: "shadow-[0_18px_40px_-18px_rgba(251,191,36,0.5)]" },
-];
+const TONE_COUNT = 5;
 
 export function Flashcard({
   question,
@@ -19,12 +13,13 @@ export function Flashcard({
   onFlip: () => void;
 }) {
   const [flipped, setFlipped] = useState(false);
-  const tone = PALETTE[index % PALETTE.length]!;
+  const tone = index % TONE_COUNT;
 
   return (
     <button
       type="button"
       aria-label={`${question.question} — retourner la carte`}
+      aria-pressed={flipped}
       onClick={() => {
         setFlipped((f) => !f);
         onFlip();
@@ -32,16 +27,12 @@ export function Flashcard({
       className={`perspective press aspect-[3/4] cursor-pointer select-none ${flipped ? "flipped" : ""}`}
     >
       <div className="flip-inner relative size-full">
-        <div
-          className={`flip-face absolute inset-0 grid place-items-center rounded-3xl border border-white/12 bg-[#25243d]/95 p-2 text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur-xl ${tone.shadow}`}
-        >
+        <div className={`flashcard-face flashcard-front flip-face absolute inset-0 rounded-3xl p-2 `}>
           <span className="font-display text-xl leading-tight sm:text-3xl md:text-4xl">
             {question.question}
           </span>
         </div>
-        <div
-          className={`flip-face flip-back absolute inset-0 grid place-items-center rounded-3xl p-2 ${tone.back} ${tone.shadow}`}
-        >
+        <div className={`flashcard-face flashcard-answer tone-${tone} flip-face flip-back absolute inset-0 rounded-3xl p-2`}>
           <span
             className={`font-display font-bold leading-tight ${
               question.type === "type3" ? "text-lg sm:text-3xl md:text-4xl" : "text-3xl sm:text-5xl md:text-6xl"
