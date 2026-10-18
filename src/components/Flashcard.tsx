@@ -35,7 +35,7 @@ export function Flashcard({
         <div className={`flashcard-face flashcard-answer tone-${tone} flip-face flip-back absolute inset-0 rounded-3xl p-2`}>
           <span
             className={`font-display font-bold leading-tight ${
-              question.type === "type3" ? "text-lg sm:text-3xl md:text-4xl" : "text-3xl sm:text-5xl md:text-6xl"
+              question.answer.includes(" ou ") ? "text-lg sm:text-3xl md:text-4xl" : "text-3xl sm:text-5xl md:text-6xl"
             }`}
           >
             {question.answer}
