@@ -61,7 +61,7 @@ function Index() {
     });
 
   return (
-    <div className="app-bg font-body text-ink relative min-h-screen overflow-hidden">
+    <div className="app-bg font-body relative min-h-screen overflow-hidden">
       <div className="pointer-events-none absolute -top-24 -left-24 size-96 rounded-full bg-sky/20 blur-3xl" />
       <div className="pointer-events-none absolute top-1/3 -right-24 size-96 rounded-full bg-accent/20 blur-3xl" />
       <div className="pointer-events-none absolute -bottom-32 left-1/4 size-96 rounded-full bg-mint/20 blur-3xl" />
@@ -70,19 +70,19 @@ function Index() {
       <div className="relative mx-auto max-w-6xl px-4 py-6 sm:px-6">
         <header className="mb-8 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="grid size-11 place-items-center rounded-2xl border border-white/10 bg-white/5 text-2xl shadow-lg backdrop-blur-xl">
+            <div className="brand-mark grid size-11 place-items-center rounded-2xl text-2xl shadow-lg backdrop-blur-xl">
               ✕
             </div>
             <div>
-              <h1 className="font-display text-xl leading-none font-semibold">Multipo</h1>
-              <p className="text-xs font-bold tracking-wide text-ink/75">révise tes tables, en mode jeu</p>
+              <h1 className="brand-title font-display text-xl leading-none font-semibold">Multipo</h1>
+              <p className="brand-tagline text-xs font-bold tracking-wide">révise tes tables, en mode jeu</p>
             </div>
           </div>
           {screen === "play" && (
             <div className="flex items-center gap-2">
               <button
                 onClick={() => setScreen("setup")}
-                className="h-10 rounded-xl border border-white/10 bg-[#1b1a30]/85 px-4 text-sm font-bold text-ink/85 shadow-sm backdrop-blur-xl transition hover:bg-white/10"
+                className="header-control h-10 rounded-xl px-4 text-sm font-bold shadow-sm backdrop-blur-xl transition"
               >
                 Réglages
               </button>
@@ -90,7 +90,7 @@ function Index() {
                 onClick={() => setSoundOn((s) => !s)}
                 title={soundOn ? "Couper le son" : "Activer le son"}
                 aria-label={soundOn ? "Couper le son" : "Activer le son"}
-                className="grid h-10 w-10 place-items-center rounded-xl border border-white/10 bg-[#1b1a30]/85 text-lg shadow-sm backdrop-blur-xl"
+                className="header-control grid h-10 w-10 place-items-center rounded-xl text-lg shadow-sm backdrop-blur-xl"
               >
                 {soundOn ? "🔊" : "🔇"}
               </button>
@@ -99,7 +99,7 @@ function Index() {
         </header>
 
         {screen === "home" && (
-          <section className="rounded-[28px] border border-white/10 bg-[#1b1a30]/85 p-6 shadow-[0_24px_60px_-20px_rgba(30,33,57,0.35)] backdrop-blur-2xl sm:p-10">
+          <section className="settings-panel rounded-[28px] p-6 backdrop-blur-2xl sm:p-10">
             <div className="mx-auto max-w-xl text-center">
               <div className="floaty mx-auto grid size-32 place-items-center">
                 <div className="absolute size-24 -rotate-12 rounded-3xl bg-accent/80 shadow-lg" />
@@ -108,15 +108,15 @@ function Index() {
                   <span className="font-display text-4xl font-bold text-white">×</span>
                 </div>
               </div>
-              <h2 className="font-display mt-8 text-4xl font-semibold text-balance sm:text-5xl">
+              <h2 className="hero-heading font-display mt-8 text-4xl font-semibold text-balance sm:text-5xl">
                 Retourne les cartes, mémorise tes tables.
               </h2>
-              <p className="mt-3 text-pretty text-ink/75">
+              <p className="hero-caption mt-3 text-pretty">
                 9 cartes, 3 types de questions, autant de séries que tu veux.
               </p>
               <button
                 onClick={() => setScreen("setup")}
-                className="font-display mt-8 h-14 w-full rounded-2xl bg-brand px-7 text-lg font-semibold text-white shadow-xl shadow-brand/25 transition hover:-translate-y-0.5 sm:w-auto"
+                className="primary-action font-display mt-8 h-14 w-full rounded-2xl px-7 text-lg font-semibold transition hover:-translate-y-0.5 sm:w-auto"
               >
                 Commencer
               </button>
@@ -125,10 +125,10 @@ function Index() {
         )}
 
         {screen === "setup" && (
-          <section className="mb-8 rounded-[28px] border border-white/10 bg-[#1b1a30]/85 p-5 shadow-[0_24px_60px_-20px_rgba(30,33,57,0.35)] backdrop-blur-2xl sm:p-7">
+          <section className="settings-panel mb-8 rounded-[28px] p-5 backdrop-blur-2xl sm:p-7">
             <div className="flex flex-col gap-6 lg:flex-row lg:items-center">
               <div className="lg:w-1/2">
-                <p className="mb-3 text-xs font-black tracking-[0.2em] text-brand uppercase">Tables à réviser</p>
+                <p className="section-eyebrow mb-3 text-xs font-black tracking-[0.2em] uppercase">Tables à réviser</p>
                 <div className="flex flex-wrap gap-2">
                   {AVAILABLE_TABLES.map((n) => {
                     const on = tables.includes(n);
@@ -137,11 +137,7 @@ function Index() {
                         key={n}
                         onClick={() => toggleTable(n)}
                         aria-pressed={on}
-                        className={`font-display h-11 w-11 rounded-2xl text-lg font-semibold transition ${
-                          on
-                            ? "bg-brand text-white shadow-lg shadow-brand/30"
-                            : "border border-white/10 bg-white/5 text-ink/85"
-                        }`}
+                        className={`table-toggle font-display h-11 w-11 rounded-2xl text-lg font-semibold transition ${on ? "is-selected" : ""}`}
                       >
                         {n}
                       </button>
@@ -151,11 +147,11 @@ function Index() {
                 <div className="mt-3 flex gap-2">
                   <button
                     onClick={() => setTables([...AVAILABLE_TABLES])}
-                    className="text-xs font-bold text-ink/65 transition hover:text-brand"
+                    className="muted-action text-xs font-bold transition"
                   >
                     Tout sélectionner
                   </button>
-                  <span className="text-ink/20">·</span>
+                  <span className="separator-dot">·</span>
                   <button
                     onClick={() => setTables([])}
                     className="text-xs font-bold text-ink/65 transition hover:text-brand"
@@ -166,7 +162,7 @@ function Index() {
               </div>
 
               <div className="lg:w-1/2">
-                <p className="mb-3 text-xs font-black tracking-[0.2em] text-brand uppercase">Types de questions</p>
+                <p className="section-eyebrow mb-3 text-xs font-black tracking-[0.2em] uppercase">Types de questions</p>
                 <div className="grid gap-2">
                   {QUESTION_TYPES.map((t, i) => {
                     const on = types.includes(t.id);
@@ -175,22 +171,18 @@ function Index() {
                         key={t.id}
                         onClick={() => toggleType(t.id)}
                         aria-pressed={on}
-                        className={`flex items-center gap-3 rounded-2xl px-3 py-2.5 text-left transition ${
-                          on ? "border-2 border-brand/40 bg-brand/10" : "border border-white/10 bg-white/5"
-                        }`}
+                        className={`question-type-toggle flex items-center gap-3 rounded-2xl px-3 py-2.5 text-left transition ${on ? "is-selected" : ""}`}
                       >
                         <span
-                          className={`grid size-6 place-items-center rounded-lg text-xs font-black ${
-                            on ? "bg-brand text-white" : "border border-white/10 bg-white/5 text-ink/85"
-                          }`}
+                          className={`question-number grid size-6 place-items-center rounded-lg text-xs font-black ${on ? "is-selected" : ""}`}
                         >
                           {i + 1}
                         </span>
-                        <span className={`text-sm font-bold ${on ? "text-ink" : "text-ink/75"}`}>{t.label}</span>
+                        <span className="question-type-label text-sm font-bold">{t.label}</span>
                         {on ? (
                           <span className="ml-auto text-brand">✓</span>
                         ) : (
-                          <span className="ml-auto size-4 rounded-md border-2 border-ink/20" />
+                          <span className="question-type-indicator ml-auto size-4 rounded-md border-2" />
                         )}
                       </button>
                     );
@@ -205,7 +197,7 @@ function Index() {
                   newSeries();
                   setScreen("play");
                 }}
-                className="font-display h-13 rounded-2xl bg-brand px-7 text-lg font-semibold text-white shadow-xl shadow-brand/25 transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-0"
+                className="primary-action font-display h-13 rounded-2xl px-7 text-lg font-semibold transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:translate-y-0"
                 style={{ height: "3.25rem" }}
               >
                 Commencer la révision →
@@ -217,7 +209,7 @@ function Index() {
         {screen === "play" && (
           <section className="relative">
             <div className="mb-4 flex items-center justify-between px-1">
-              <p className="text-sm font-bold text-ink/65">Tables {tablesLabel} ✦ touche une carte</p>
+              <p className="game-meta text-sm font-bold">Tables {tablesLabel} ✦ touche une carte</p>
               <button onClick={newSeries} className="text-sm font-bold text-brand hover:underline">
                 Nouvelle série ↻
               </button>
