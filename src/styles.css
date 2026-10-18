@@ -198,3 +198,157 @@
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-12px); }
 }
+
+
+/* Charte Banque d'applis : bleu nuit franc, surfaces opaques et texte blanc. */
+html,
+body {
+  min-height: 100%;
+  background: #070b20 !important;
+  color: #f8f9ff !important;
+}
+
+body {
+  color-scheme: dark;
+}
+
+.app-bg {
+  color: #f8f9ff !important;
+  background:
+    radial-gradient(ellipse at 15% 12%, rgba(82, 64, 180, 0.20), transparent 38%),
+    radial-gradient(ellipse at 84% 28%, rgba(58, 93, 190, 0.15), transparent 35%),
+    linear-gradient(145deg, #070b20 0%, #0b1230 54%, #100b2b 100%) !important;
+}
+
+.settings-panel {
+  color: #f8f9ff !important;
+  background: linear-gradient(135deg, rgba(16, 25, 57, 0.98), rgba(14, 17, 48, 0.98)) !important;
+  border: 1px solid rgba(139, 117, 255, 0.52) !important;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.36), inset 0 1px 0 rgba(255, 255, 255, 0.045) !important;
+}
+
+.brand-mark {
+  color: #fff !important;
+  border: 1px solid rgba(151, 126, 255, 0.65) !important;
+  background: linear-gradient(145deg, #7b52ff, #5634c8) !important;
+}
+
+.brand-title,
+.hero-heading {
+  color: #fff !important;
+}
+
+.brand-tagline,
+.hero-caption,
+.game-meta {
+  color: #c8d0f1 !important;
+}
+
+.section-eyebrow {
+  color: #a891ff !important;
+}
+
+.header-control {
+  color: #fff !important;
+  background: #171f43 !important;
+  border: 1px solid rgba(148, 132, 255, 0.48) !important;
+}
+.header-control:hover {
+  background: #242b58 !important;
+}
+
+.primary-action {
+  color: #fff !important;
+  background: linear-gradient(115deg, #8057ff, #633ee2) !important;
+  border: 1px solid rgba(199, 184, 255, 0.25) !important;
+  box-shadow: 0 12px 32px rgba(95, 62, 226, 0.32) !important;
+}
+.primary-action:hover {
+  background: linear-gradient(115deg, #916eff, #7351ef) !important;
+}
+.primary-action:disabled {
+  background: #343553 !important;
+  color: #a4aac7 !important;
+  box-shadow: none !important;
+}
+
+.table-toggle {
+  color: #f5f4ff !important;
+  background: #121a3c !important;
+  border: 1px solid #7663d6 !important;
+}
+.table-toggle:hover,
+.table-toggle.is-selected {
+  color: #fff !important;
+  background: linear-gradient(145deg, #8a68ff, #6742df) !important;
+  border-color: #ab96ff !important;
+  box-shadow: 0 8px 22px rgba(94, 62, 221, 0.25) !important;
+}
+
+.muted-action {
+  color: #c5ccef !important;
+}
+.muted-action:hover {
+  color: #b4a0ff !important;
+}
+.separator-dot {
+  color: #64709c !important;
+}
+
+.question-type-toggle {
+  color: #f8f9ff !important;
+  background: #111a3b !important;
+  border: 1px solid rgba(125, 111, 219, 0.75) !important;
+}
+.question-type-toggle:hover,
+.question-type-toggle.is-selected {
+  background: #1a2149 !important;
+  border-color: #9b7cff !important;
+}
+.question-number {
+  color: #fff !important;
+  background: #273057 !important;
+  border: 1px solid #6153a8 !important;
+}
+.question-number.is-selected {
+  background: linear-gradient(145deg, #9274ff, #6845e3) !important;
+  border-color: #a995ff !important;
+}
+.question-type-label {
+  color: #f8f9ff !important;
+}
+.question-type-indicator {
+  border-color: #7881a7 !important;
+}
+
+.flashcard-grid {
+  width: 100%;
+  max-width: none;
+}
+.flashcard-face {
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: #fff !important;
+  border: 1px solid rgba(139, 127, 255, 0.78) !important;
+  background: linear-gradient(145deg, #172244 0%, #101a3a 62%, #151536 100%) !important;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+}
+.flashcard-front {
+  color: #fff !important;
+}
+.flashcard-answer {
+  color: #fff !important;
+  border-color: rgba(183, 163, 255, 0.72) !important;
+}
+.flashcard-answer.tone-0 { background: linear-gradient(145deg, #6544d8, #432aa8) !important; }
+.flashcard-answer.tone-1 { background: linear-gradient(145deg, #2259a5, #17356c) !important; }
+.flashcard-answer.tone-2 { background: linear-gradient(145deg, #813db0, #4b226f) !important; }
+.flashcard-answer.tone-3 { background: linear-gradient(145deg, #167e96, #10536a) !important; }
+.flashcard-answer.tone-4 { background: linear-gradient(145deg, #453e91, #29265f) !important; }
+
+@media (max-width: 639px) {
+  .settings-panel {
+    border-radius: 22px !important;
+  }
+}
